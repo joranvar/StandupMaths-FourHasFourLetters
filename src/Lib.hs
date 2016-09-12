@@ -41,3 +41,6 @@ inEnglish i | i < 1000000000 = case i `divMod` 1000000 of
                            (k, j) -> inEnglish k ++ " million " ++ inEnglish j
 inEnglish i | i < 1000000000000 = case i `divMod` 1000000000 of
                            (k, j) -> inEnglish k ++ " billion " ++ inEnglish j
+
+letterCount :: String -> Int
+letterCount = length . filter (/= ' ')
