@@ -60,8 +60,11 @@ inEnglish i | i < 1000000000000 =
 letterCount :: String -> Int
 letterCount = length . filter (/= ' ')
 
-chain :: Int -> [(Int, String)]
+chain :: Int -> [Int]
 chain = chain' []
   where chain' cs i
-          | i `elem` (map fst cs) = cs
-          | otherwise = let next = inEnglish i in chain' ((i, next):cs) (letterCount next)
+          | i `elem` cs = cs
+          | otherwise = chain' (i : cs) $ nextInt i
+
+nextInt :: Int -> Int
+nextInt = letterCount . inEnglish
