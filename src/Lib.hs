@@ -1,6 +1,43 @@
 module Lib
-    ( someFunc
+    ( inEnglish
     ) where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+inEnglish :: Int -> String
+inEnglish 0 = "zero"
+inEnglish 1 = "one"
+inEnglish 2 = "two"
+inEnglish 3 = "three"
+inEnglish 4 = "four"
+inEnglish 5 = "five"
+inEnglish 6 = "six"
+inEnglish 7 = "seven"
+inEnglish 8 = "eight"
+inEnglish 9 = "nine"
+inEnglish 10 = "ten"
+inEnglish 11 = "eleven"
+inEnglish 12 = "twelve"
+inEnglish 13 = "thirteen"
+inEnglish 14 = "fourteen"
+inEnglish 15 = "fifteen"
+inEnglish 16 = "sixteen"
+inEnglish 17 = "seventeen"
+inEnglish 18 = "eighteen"
+inEnglish 19 = "nineteen"
+inEnglish i | i < 100 = case i `divMod` 10 of
+                          (2, j) -> "twenty" ++ inEnglish j
+                          (3, j) -> "thirty" ++ inEnglish j
+                          (4, j) -> "forty" ++ inEnglish j
+                          (5, j) -> "fifty" ++ inEnglish j
+                          (6, j) -> "sixty" ++ inEnglish j
+                          (7, j) -> "seventy" ++ inEnglish j
+                          (8, j) -> "eighty" ++ inEnglish j
+                          (9, j) -> "ninety" ++ inEnglish j
+                          _ -> ""
+inEnglish i | i < 1000 = case i `divMod` 100 of
+                           (k, j) -> inEnglish k ++ " hundred " ++ inEnglish j
+inEnglish i | i < 1000000 = case i `divMod` 1000 of
+                           (k, j) -> inEnglish k ++ " thousand " ++ inEnglish j
+inEnglish i | i < 1000000000 = case i `divMod` 1000000 of
+                           (k, j) -> inEnglish k ++ " million " ++ inEnglish j
+inEnglish i | i < 1000000000000 = case i `divMod` 1000000000 of
+                           (k, j) -> inEnglish k ++ " billion " ++ inEnglish j
