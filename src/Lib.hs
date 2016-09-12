@@ -2,6 +2,9 @@ module Lib
     ( inEnglish
     ) where
 
+import Data.List (maximumBy)
+import Data.Ord (comparing)
+
 inEnglish :: Int -> String
 inEnglish 0 = "zero"
 inEnglish 1 = "one"
@@ -68,3 +71,6 @@ chain = chain' []
 
 nextInt :: Int -> Int
 nextInt = letterCount . inEnglish
+
+longest :: Int -> [(Int, String)]
+longest max = map (\i -> (i, inEnglish i)) $ maximumBy (comparing length) $ map chain [0..max]
