@@ -44,3 +44,9 @@ inEnglish i | i < 1000000000000 = case i `divMod` 1000000000 of
 
 letterCount :: String -> Int
 letterCount = length . filter (/= ' ')
+
+chain :: Int -> [(Int, String)]
+chain = chain' []
+  where chain' cs i
+          | i `elem` (map fst cs) = cs
+          | otherwise = let next = inEnglish i in chain' ((i, next):cs) (letterCount next)
