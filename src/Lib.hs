@@ -2,7 +2,7 @@ module Lib
     ( inEnglish
     ) where
 
-import Data.List (maximumBy)
+import Data.List (nubBy)
 import Data.Ord (comparing)
 
 inEnglish :: Int -> String
@@ -72,5 +72,5 @@ chain = chain' []
 nextInt :: Int -> Int
 nextInt = letterCount . inEnglish
 
-longest :: [Int] -> [(Int, String)]
-longest = map (\i -> (i, inEnglish i)) . maximumBy (comparing length) . map chain
+longest :: [Int] -> [[(Int, String)]]
+longest = (map.map) (\i -> (i, inEnglish i)) . nubBy (\a b -> length a == length b) . map chain
