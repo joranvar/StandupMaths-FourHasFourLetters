@@ -72,5 +72,5 @@ chain = chain' []
 nextInt :: Int -> Int
 nextInt = letterCount . inEnglish
 
-longest :: Int -> [(Int, String)]
-longest max = map (\i -> (i, inEnglish i)) $ maximumBy (comparing length) $ map chain [0..max]
+longest :: [Int] -> [(Int, String)]
+longest = map (\i -> (i, inEnglish i)) . maximumBy (comparing length) . map chain
