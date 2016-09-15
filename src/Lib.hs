@@ -5,7 +5,7 @@ module Lib
 import Data.List (nubBy)
 import Data.Ord (comparing)
 
-inEnglish :: Int -> String
+inEnglish :: Integer -> String
 inEnglish 0 = "zero"
 inEnglish 1 = "one"
 inEnglish 2 = "two"
@@ -61,17 +61,17 @@ splitOff f combineNonZero factor stringFactor i =
   in combine $ i `divMod` factor
 
 
-letterCount :: String -> Int
-letterCount = length . filter (/= ' ')
+letterCount :: String -> Integer
+letterCount = fromIntegral . length . filter (/= ' ')
 
-chain :: Int -> [Int]
+chain :: Integer -> [Integer]
 chain = chain' []
   where chain' cs i
           | i `elem` cs = cs
-          | otherwise = chain' (i : cs) $ nextInt i
+          | otherwise = chain' (i : cs) $ nextInteger i
 
-nextInt :: Int -> Int
-nextInt = letterCount . inEnglish
+nextInteger :: Integer -> Integer
+nextInteger = letterCount . inEnglish
 
-longest :: [Int] -> [[(Int, String)]]
+longest :: [Integer] -> [[(Integer, String)]]
 longest = (map.map) (\i -> (i, inEnglish i)) . nubBy (\a b -> length a == length b) . map chain
