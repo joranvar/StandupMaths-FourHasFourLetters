@@ -27,38 +27,38 @@ inEnglish 17 = "seventeen"
 inEnglish 18 = "eighteen"
 inEnglish 19 = "nineteen"
 inEnglish i | i < 100 =
-              let inEnglish' 0 = ""
-                  inEnglish' i = "-" ++ inEnglish i in
-              case i `divMod` 10 of
-                (2, j) -> "twenty" ++ inEnglish' j
-                (3, j) -> "thirty" ++ inEnglish' j
-                (4, j) -> "forty" ++ inEnglish' j
-                (5, j) -> "fifty" ++ inEnglish' j
-                (6, j) -> "sixty" ++ inEnglish' j
-                (7, j) -> "seventy" ++ inEnglish' j
-                (8, j) -> "eighty" ++ inEnglish' j
-                (9, j) -> "ninety" ++ inEnglish' j
-                _ -> ""
+    let inEnglish' 0 = ""
+        inEnglish' i = "-" ++ inEnglish i in
+      case i `divMod` 10 of
+         (2, j) -> "twenty"  ++ inEnglish' j
+         (3, j) -> "thirty"  ++ inEnglish' j
+         (4, j) -> "forty"   ++ inEnglish' j
+         (5, j) -> "fifty"   ++ inEnglish' j
+         (6, j) -> "sixty"   ++ inEnglish' j
+         (7, j) -> "seventy" ++ inEnglish' j
+         (8, j) -> "eighty"  ++ inEnglish' j
+         (9, j) -> "ninety"  ++ inEnglish' j
+         _      -> ""
 inEnglish i | i < 1000 =
-                let inEnglish' 0 = ""
-                    inEnglish' i = " " ++ inEnglish i in
-                  case i `divMod` 100 of
-                    (k, j) -> inEnglish k ++ " hundred" ++ inEnglish' j
+    let inEnglish' 0 = ""
+        inEnglish' i = " " ++ inEnglish i in
+      case i `divMod` 100 of
+        (k, j) -> inEnglish k ++ " hundred" ++ inEnglish' j
 inEnglish i | i < 1000000 =
-                let inEnglish' 0 = ""
-                    inEnglish' i = " " ++ inEnglish i in
-                  case i `divMod` 1000 of
-                    (k, j) -> inEnglish k ++ " thousand" ++ inEnglish' j
+    let inEnglish' 0 = ""
+        inEnglish' i = " " ++ inEnglish i in
+      case i `divMod` 1000 of
+        (k, j) -> inEnglish k ++ " thousand" ++ inEnglish' j
 inEnglish i | i < 1000000000 =
-                let inEnglish' 0 = ""
-                    inEnglish' i = " " ++ inEnglish i in
-                  case i `divMod` 1000000 of
-                    (k, j) -> inEnglish k ++ " million" ++ inEnglish' j
+    let inEnglish' 0 = ""
+        inEnglish' i = " " ++ inEnglish i in
+      case i `divMod` 1000000 of
+        (k, j) -> inEnglish k ++ " million" ++ inEnglish' j
 inEnglish i | i < 1000000000000 =
-                let inEnglish' 0 = ""
-                    inEnglish' i = " " ++ inEnglish i in
-                  case i `divMod` 1000000000 of
-                    (k, j) -> inEnglish k ++ " billion" ++ inEnglish' j
+    let inEnglish' 0 = ""
+        inEnglish' i = " " ++ inEnglish i in
+      case i `divMod` 1000000000 of
+        (k, j) -> inEnglish k ++ " billion" ++ inEnglish' j
 
 letterCount :: String -> Int
 letterCount = length . filter (/= ' ')
