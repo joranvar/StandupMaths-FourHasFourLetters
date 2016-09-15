@@ -56,7 +56,11 @@ inEnglish i =
     8  -> splitOff inEnglish " " (1000^(8+1))  " octillion" i
     9  -> splitOff inEnglish " " (1000^(9+1))  " nonillion" i
     10 -> splitOff inEnglish " " (1000^(10+1)) " decillion" i
-    11 -> splitOff inEnglish " " (1000^(11+1)) " onzillion" i
+    11 -> splitOff inEnglish " " (1000^(11+1)) " undecillion" i
+    12 -> splitOff inEnglish " " (1000^(12+1)) " duodecillion" i
+    13 -> splitOff inEnglish " " (1000^(13+1)) " tredecillion" i
+    14 -> splitOff inEnglish " " (1000^(14+1)) " quattuordecillion" i
+    15 -> splitOff inEnglish " " (1000^(15+1)) " quindecillion" i
 
 splitOff f combineNonZero factor stringFactor i =
   let f' 0 = ""
