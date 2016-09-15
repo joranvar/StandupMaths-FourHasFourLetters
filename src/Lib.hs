@@ -2,6 +2,7 @@ module Lib
     ( inEnglish
     , chain
     , longest
+    , findLongest
     ) where
 
 import Data.List (nubBy)
@@ -78,3 +79,6 @@ nextInteger = letterCount . inEnglish
 
 longest :: [Integer] -> [[(Integer, String)]]
 longest = (map.map) (\i -> (i, inEnglish i)) . nubBy (\a b -> length a == length b) . map chain
+
+findLongest :: [Integer] -> IO ()
+findLongest = mapM_ (\c -> print $(length c, c)) . longest
