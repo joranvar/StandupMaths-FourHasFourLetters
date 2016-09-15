@@ -65,7 +65,7 @@ splitOff f combineNonZero factor stringFactor i =
 
 
 letterCount :: String -> Integer
-letterCount = fromIntegral . length . filter (/= ' ')
+letterCount = fromIntegral . length . filter (`elem` ['a'..'z'])
 
 chain :: Integer -> [Integer]
 chain = chain' []
