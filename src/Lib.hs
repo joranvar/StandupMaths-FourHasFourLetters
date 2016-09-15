@@ -1,5 +1,7 @@
 module Lib
     ( inEnglish
+    , chain
+    , longest
     ) where
 
 import Data.List (nubBy)
