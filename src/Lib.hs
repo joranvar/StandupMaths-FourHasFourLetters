@@ -28,7 +28,7 @@ inEnglish 18 = "eighteen"
 inEnglish 19 = "nineteen"
 inEnglish i | i < 100 =
               let inEnglish' 0 = ""
-                  inEnglish' i = " " ++ inEnglish i in
+                  inEnglish' i = "-" ++ inEnglish i in
               case i `divMod` 10 of
                 (2, j) -> "twenty" ++ inEnglish' j
                 (3, j) -> "thirty" ++ inEnglish' j
