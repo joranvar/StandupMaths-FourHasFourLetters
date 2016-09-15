@@ -13,4 +13,5 @@ tests = testGroup "Tests" [englishTests]
 englishTests :: TestTree
 englishTests = testGroup "English Tests"
   [ testCase "0 is zero" $ inEnglish 0 @?= "zero"
+  , testCase "100 in one hundred" $ inEnglish 100 @?= "one hundred"
   ]
