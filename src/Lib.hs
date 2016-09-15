@@ -39,26 +39,17 @@ inEnglish i | i < 100 =
          (8, j) -> "eighty"  ++ inEnglish' j
          (9, j) -> "ninety"  ++ inEnglish' j
          _      -> ""
-inEnglish i | i < 1000 =
-    let inEnglish' 0 = ""
-        inEnglish' i = " " ++ inEnglish i in
-      case i `divMod` 100 of
-        (k, j) -> inEnglish k ++ " hundred" ++ inEnglish' j
-inEnglish i | i < 1000000 =
-    let inEnglish' 0 = ""
-        inEnglish' i = " " ++ inEnglish i in
-      case i `divMod` 1000 of
-        (k, j) -> inEnglish k ++ " thousand" ++ inEnglish' j
-inEnglish i | i < 1000000000 =
-    let inEnglish' 0 = ""
-        inEnglish' i = " " ++ inEnglish i in
-      case i `divMod` 1000000 of
-        (k, j) -> inEnglish k ++ " million" ++ inEnglish' j
-inEnglish i | i < 1000000000000 =
-    let inEnglish' 0 = ""
-        inEnglish' i = " " ++ inEnglish i in
-      case i `divMod` 1000000000 of
-        (k, j) -> inEnglish k ++ " billion" ++ inEnglish' j
+inEnglish i | i < 1000 = splitOff inEnglish " " 100 " hundred" i
+inEnglish i | i < 1000000 = splitOff inEnglish " " 1000 " thousand" i
+inEnglish i | i < 1000000000 = splitOff inEnglish " " 1000000 " million" i
+inEnglish i | i < 1000000000000 = splitOff inEnglish " " 1000000000 " billion" i
+
+splitOff f combineNonZero factor stringFactor i =
+  let f' 0 = ""
+      f' other = combineNonZero ++ f other
+      combine (div, mod) = f div ++ stringFactor ++ f' mod
+  in combine $ i `divMod` factor
+
 
 letterCount :: String -> Int
 letterCount = length . filter (/= ' ')
