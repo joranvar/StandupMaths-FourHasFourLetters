@@ -41,8 +41,18 @@ inEnglish i | i < 100 =
          _      -> ""
 inEnglish i | i < 1000 = splitOff inEnglish " " 100 " hundred" i
 inEnglish i | i < 1000000 = splitOff inEnglish " " 1000 " thousand" i
-inEnglish i | i < 1000000000 = splitOff inEnglish " " 1000000 " million" i
-inEnglish i | i < 1000000000000 = splitOff inEnglish " " 1000000000 " billion" i
+inEnglish i =
+  case (subtract 1) $ (`div` (3::Int)) $ fromIntegral $ truncate $ logBase 10 $ fromIntegral i of
+    1  -> splitOff inEnglish " " (1000^(1+1))  " million" i
+    2  -> splitOff inEnglish " " (1000^(2+1))  " billion" i
+    3  -> splitOff inEnglish " " (1000^(3+1))  " trillion" i
+    4  -> splitOff inEnglish " " (1000^(4+1))  " quadrillion" i
+    5  -> splitOff inEnglish " " (1000^(5+1))  " pentillion" i
+    6  -> splitOff inEnglish " " (1000^(6+1))  " hexillion" i
+    7  -> splitOff inEnglish " " (1000^(7+1))  " heptillion" i
+    8  -> splitOff inEnglish " " (1000^(8+1))  " octillion" i
+    9  -> splitOff inEnglish " " (1000^(9+1))  " nonillion" i
+    10 -> splitOff inEnglish " " (1000^(10+1)) " decillion" i
 
 splitOff f combineNonZero factor stringFactor i =
   let f' 0 = ""
