@@ -33,6 +33,9 @@ test-suite StandupMaths-FourHasFourLetters-test
   main-is:             Spec.hs
   build-depends:       base
                      , StandupMaths-FourHasFourLetters
+                     , tasty
+                     , tasty-hunit
+                     , tasty-smallcheck
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
 

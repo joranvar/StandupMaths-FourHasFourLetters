@@ -1,2 +1,16 @@
+import Test.Tasty
+import Test.Tasty.SmallCheck as SC
+import Test.Tasty.HUnit
+
+import Lib
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = defaultMain tests
+
+tests :: TestTree
+tests = testGroup "Tests" [englishTests]
+
+englishTests :: TestTree
+englishTests = testGroup "English Tests"
+  [ testCase "0 is zero" $ inEnglish 0 @?= "zero"
+  ]
