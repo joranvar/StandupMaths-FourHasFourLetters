@@ -47,9 +47,9 @@ inEnglish i =
     2  -> splitOff inEnglish " " (1000^(2+1))  " billion" i
     3  -> splitOff inEnglish " " (1000^(3+1))  " trillion" i
     4  -> splitOff inEnglish " " (1000^(4+1))  " quadrillion" i
-    5  -> splitOff inEnglish " " (1000^(5+1))  " pentillion" i
-    6  -> splitOff inEnglish " " (1000^(6+1))  " hexillion" i
-    7  -> splitOff inEnglish " " (1000^(7+1))  " heptillion" i
+    5  -> splitOff inEnglish " " (1000^(5+1))  " quintillion" i
+    6  -> splitOff inEnglish " " (1000^(6+1))  " sextillion" i
+    7  -> splitOff inEnglish " " (1000^(7+1))  " septillion" i
     8  -> splitOff inEnglish " " (1000^(8+1))  " octillion" i
     9  -> splitOff inEnglish " " (1000^(9+1))  " nonillion" i
     10 -> splitOff inEnglish " " (1000^(10+1)) " decillion" i
