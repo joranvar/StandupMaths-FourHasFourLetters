@@ -7,6 +7,7 @@ module Lib
 
 import Data.List (nubBy)
 import Data.Ord (comparing)
+import Data.Number.BigFloat
 
 inEnglish :: Integer -> String
 inEnglish 0 = "zero"
@@ -45,7 +46,7 @@ inEnglish i | i < 100 =
 inEnglish i | i < 1000 = splitOff inEnglish " " 100 " hundred" i
 inEnglish i | i < 1000000 = splitOff inEnglish " " 1000 " thousand" i
 inEnglish i =
-  case (subtract 1) $ (`div` (3::Int)) $ fromIntegral $ truncate $ logBase 10 $ fromIntegral i of
+  case (subtract 1) $ (`div` (3::Int)) $ fromIntegral $ truncate $ (logBase 10 $ fromIntegral i :: BigFloat Prec50) of
     1  -> splitOff inEnglish " " (1000^(1+1))  " million" i
     2  -> splitOff inEnglish " " (1000^(2+1))  " billion" i
     3  -> splitOff inEnglish " " (1000^(3+1))  " trillion" i
